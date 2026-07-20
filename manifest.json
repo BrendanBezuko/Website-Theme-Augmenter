@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "DOOM YouTube",
+  "version": "1.1.0",
+  "description": "Neon DOOM-style YouTube theme with an optional Hide Shorts mode.",
+  "permissions": ["storage"],
+  "host_permissions": ["*://www.youtube.com/*", "*://youtube.com/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "DOOM YouTube",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/*", "*://youtube.com/*"],
+      "css": ["content.css"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ]
+}

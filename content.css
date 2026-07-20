@@ -1,0 +1,485 @@
+/* DOOM YouTube — neon phosphor / future tactical HUD */
+
+html.doom-yt {
+  --doom-bg: #020605;
+  --doom-panel: rgba(4, 18, 12, 0.92);
+  --doom-panel-2: rgba(6, 28, 18, 0.95);
+  --doom-glass: rgba(0, 255, 140, 0.06);
+  --doom-green: #39ff14;
+  --doom-green-hot: #7dff4a;
+  --doom-phosphor: #00ff9c;
+  --doom-cyan: #00f0ff;
+  --doom-amber: #c8ff4d;
+  --doom-metal: rgba(0, 255, 140, 0.22);
+  --doom-metal-2: rgba(0, 255, 160, 0.38);
+  --doom-text: #d8ffe8;
+  --doom-muted: #6f9f84;
+  --doom-glow: rgba(57, 255, 20, 0.55);
+  --doom-glow-soft: rgba(0, 255, 156, 0.25);
+
+  --yt-spec-base-background: var(--doom-bg) !important;
+  --yt-spec-raised-background: #04140e !important;
+  --yt-spec-menu-background: #061c12 !important;
+  --yt-spec-inverted-background: var(--doom-text) !important;
+  --yt-spec-text-primary: var(--doom-text) !important;
+  --yt-spec-text-secondary: var(--doom-muted) !important;
+  --yt-spec-text-disabled: #3d5c4a !important;
+  --yt-spec-brand-background-solid: var(--doom-green) !important;
+  --yt-spec-brand-background-primary: var(--doom-green) !important;
+  --yt-spec-call-to-action: var(--doom-phosphor) !important;
+  --yt-spec-10-percent-layer: rgba(57, 255, 20, 0.1) !important;
+  --yt-spec-additive-background: rgba(0, 255, 156, 0.05) !important;
+  --yt-spec-general-background-a: var(--doom-bg) !important;
+  --yt-spec-general-background-b: #04140e !important;
+  --yt-spec-general-background-c: #061c12 !important;
+  --yt-spec-badge-chip-background: rgba(0, 40, 24, 0.9) !important;
+  --yt-spec-button-chip-background-hover: rgba(57, 255, 20, 0.14) !important;
+  --yt-spec-static-brand-red: var(--doom-green) !important;
+  --yt-spec-static-brand-white: var(--doom-text) !important;
+  --yt-spec-icon-active-other: var(--doom-phosphor) !important;
+  --yt-spec-icon-inactive: var(--doom-muted) !important;
+  --yt-spec-brand-link-text: var(--doom-phosphor) !important;
+  --yt-spec-themed-blue: var(--doom-cyan) !important;
+  --yt-spec-themed-green: var(--doom-green) !important;
+  --yt-spec-outline: var(--doom-metal-2) !important;
+  --ytd-searchbox-background: rgba(0, 12, 8, 0.95) !important;
+  --ytd-searchbox-legacy-border-color: var(--doom-metal) !important;
+  --ytd-searchbox-legacy-button-color: #062016 !important;
+  --ytd-searchbox-legacy-button-border-color: var(--doom-metal-2) !important;
+}
+
+html.doom-yt,
+html.doom-yt body,
+html.doom-yt ytd-app {
+  background: var(--doom-bg) !important;
+  color: var(--doom-text) !important;
+  font-family: "Segoe UI", "DIN Alternate", "Eurostile", "Arial Narrow",
+    sans-serif !important;
+  letter-spacing: 0.04em;
+}
+
+html.doom-yt body {
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0, 255, 120, 0.16), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(0, 240, 255, 0.08), transparent 50%),
+    linear-gradient(180deg, #03110b 0%, var(--doom-bg) 40%, #010403 100%) !important;
+}
+
+/* Soft vignette only — no fake HUD chrome */
+html.doom-yt ytd-app::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    rgba(0, 0, 0, 0.45) 100%
+  );
+}
+
+/* Thin top accent */
+html.doom-yt ytd-app::after {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  z-index: 2147483001;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--doom-phosphor) 30%,
+    var(--doom-green) 50%,
+    var(--doom-cyan) 70%,
+    transparent 100%
+  );
+  opacity: 0.7;
+}
+
+/* Masthead — glass HUD bar */
+html.doom-yt #masthead-container,
+html.doom-yt ytd-masthead,
+html.doom-yt #background.ytd-masthead {
+  background: linear-gradient(
+    180deg,
+    rgba(2, 24, 14, 0.96) 0%,
+    rgba(2, 10, 7, 0.92) 100%
+  ) !important;
+  border-bottom: 1px solid var(--doom-metal-2) !important;
+  box-shadow:
+    0 0 24px rgba(0, 255, 140, 0.12),
+    inset 0 -1px 0 rgba(0, 255, 156, 0.15) !important;
+  backdrop-filter: blur(14px) saturate(1.3);
+}
+
+html.doom-yt ytd-topbar-logo-renderer,
+html.doom-yt #logo-icon {
+  filter: grayscale(1) sepia(1) hue-rotate(70deg) saturate(6) brightness(1.15)
+    drop-shadow(0 0 6px rgba(57, 255, 20, 0.65));
+}
+
+html.doom-yt #search-input,
+html.doom-yt input#search,
+html.doom-yt yt-searchbox input {
+  background: rgba(0, 16, 10, 0.9) !important;
+  color: var(--doom-text) !important;
+  border-color: var(--doom-metal) !important;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace !important;
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 8px rgba(0, 255, 156, 0.25);
+  box-shadow: inset 0 0 20px rgba(0, 255, 120, 0.05);
+}
+
+html.doom-yt #search-input:focus,
+html.doom-yt input#search:focus,
+html.doom-yt yt-searchbox input:focus {
+  border-color: var(--doom-phosphor) !important;
+  box-shadow:
+    0 0 0 1px var(--doom-phosphor),
+    0 0 18px var(--doom-glow-soft) !important;
+}
+
+html.doom-yt #search-icon-legacy,
+html.doom-yt yt-searchbox button,
+html.doom-yt .ytSearchboxComponentSearchButton {
+  background: rgba(0, 40, 24, 0.95) !important;
+  border-color: var(--doom-green) !important;
+  color: var(--doom-green) !important;
+  box-shadow: 0 0 12px rgba(57, 255, 20, 0.2);
+}
+
+html.doom-yt #search-icon-legacy:hover,
+html.doom-yt yt-searchbox button:hover,
+html.doom-yt .ytSearchboxComponentSearchButton:hover {
+  background: rgba(57, 255, 20, 0.18) !important;
+  color: var(--doom-green-hot) !important;
+  box-shadow: 0 0 20px var(--doom-glow);
+}
+
+/* Guide / sidebar */
+html.doom-yt #guide-content,
+html.doom-yt ytd-guide-renderer,
+html.doom-yt tp-yt-app-drawer,
+html.doom-yt #guide-inner-content {
+  background: linear-gradient(
+    180deg,
+    rgba(2, 20, 12, 0.98),
+    rgba(1, 8, 5, 0.98)
+  ) !important;
+  border-right: 1px solid var(--doom-metal) !important;
+  box-shadow: inset -12px 0 24px rgba(0, 255, 140, 0.04);
+}
+
+html.doom-yt ytd-guide-entry-renderer,
+html.doom-yt ytd-mini-guide-entry-renderer {
+  border-radius: 2px !important;
+}
+
+html.doom-yt ytd-guide-entry-renderer:hover,
+html.doom-yt ytd-mini-guide-entry-renderer:hover,
+html.doom-yt ytd-guide-entry-renderer[active],
+html.doom-yt ytd-mini-guide-entry-renderer[aria-selected="true"] {
+  background: rgba(57, 255, 20, 0.1) !important;
+  box-shadow:
+    inset 2px 0 0 var(--doom-green),
+    0 0 16px rgba(57, 255, 20, 0.12);
+}
+
+html.doom-yt ytd-guide-entry-renderer yt-formatted-string,
+html.doom-yt ytd-mini-guide-entry-renderer span {
+  text-transform: uppercase;
+  font-size: 0.95em;
+  letter-spacing: 0.1em;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace !important;
+}
+
+/* Chips — holo pills */
+html.doom-yt yt-chip-cloud-chip-renderer {
+  border-radius: 2px !important;
+}
+
+html.doom-yt yt-chip-cloud-chip-renderer[chip-style="STYLE_DEFAULT"],
+html.doom-yt yt-chip-cloud-chip-renderer:not([selected]) {
+  background: rgba(0, 24, 14, 0.85) !important;
+  border: 1px solid var(--doom-metal) !important;
+  color: var(--doom-text) !important;
+  box-shadow: inset 0 0 12px rgba(0, 255, 140, 0.04);
+}
+
+html.doom-yt yt-chip-cloud-chip-renderer[selected],
+html.doom-yt yt-chip-cloud-chip-renderer[chip-style="STYLE_HOME_FILTER_CHIP_SELECTED"] {
+  background: rgba(57, 255, 20, 0.16) !important;
+  border-color: var(--doom-green) !important;
+  color: var(--doom-green-hot) !important;
+  box-shadow:
+    0 0 14px var(--doom-glow-soft),
+    inset 0 0 12px rgba(57, 255, 20, 0.12);
+  text-shadow: 0 0 8px rgba(57, 255, 20, 0.5);
+}
+
+/* Feed — glass tactical frames */
+html.doom-yt ytd-rich-item-renderer,
+html.doom-yt ytd-video-renderer,
+html.doom-yt ytd-compact-video-renderer,
+html.doom-yt ytd-grid-video-renderer,
+html.doom-yt ytd-playlist-renderer,
+html.doom-yt ytd-radio-renderer {
+  background: linear-gradient(
+    165deg,
+    rgba(6, 32, 20, 0.75),
+    rgba(2, 12, 8, 0.9)
+  ) !important;
+  outline: 1px solid var(--doom-metal);
+  border-radius: 2px !important;
+  box-shadow: inset 0 0 24px rgba(0, 255, 140, 0.04);
+  transition: outline-color 140ms ease, box-shadow 140ms ease, transform 140ms ease;
+}
+
+html.doom-yt ytd-rich-item-renderer:hover,
+html.doom-yt ytd-video-renderer:hover,
+html.doom-yt ytd-compact-video-renderer:hover,
+html.doom-yt ytd-grid-video-renderer:hover {
+  outline-color: var(--doom-green);
+  box-shadow:
+    0 0 22px var(--doom-glow-soft),
+    inset 0 0 30px rgba(57, 255, 20, 0.08);
+  transform: translateY(-1px);
+}
+
+html.doom-yt ytd-thumbnail,
+html.doom-yt #thumbnail {
+  border-radius: 1px !important;
+}
+
+html.doom-yt ytd-thumbnail {
+  position: relative;
+}
+
+html.doom-yt ytd-thumbnail::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(0, 255, 156, 0.22);
+}
+
+html.doom-yt #video-title,
+html.doom-yt a#video-title,
+html.doom-yt yt-formatted-string#video-title {
+  color: var(--doom-text) !important;
+  text-shadow: 0 0 10px rgba(0, 255, 156, 0.15);
+}
+
+html.doom-yt #video-title:hover,
+html.doom-yt a#video-title:hover {
+  color: var(--doom-green-hot) !important;
+  text-shadow: 0 0 12px var(--doom-glow);
+}
+
+html.doom-yt #metadata-line span,
+html.doom-yt #metadata-line yt-formatted-string,
+html.doom-yt ytd-video-meta-block {
+  color: var(--doom-muted) !important;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace !important;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.88em !important;
+}
+
+html.doom-yt ytd-thumbnail-overlay-time-status-renderer,
+html.doom-yt badge-shape {
+  background: rgba(0, 12, 8, 0.9) !important;
+  border: 1px solid var(--doom-phosphor) !important;
+  border-radius: 1px !important;
+  color: var(--doom-green) !important;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace !important;
+  box-shadow: 0 0 10px rgba(0, 255, 156, 0.35);
+  text-shadow: 0 0 6px rgba(57, 255, 20, 0.7);
+}
+
+/* Buttons */
+html.doom-yt yt-button-shape button,
+html.doom-yt ytd-button-renderer button,
+html.doom-yt ytd-toggle-button-renderer button,
+html.doom-yt .yt-spec-button-shape-next {
+  border-radius: 2px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.12em;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace !important;
+}
+
+html.doom-yt yt-button-shape .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled,
+html.doom-yt ytd-subscribe-button-renderer button,
+html.doom-yt ytd-button-renderer.style-destructive button {
+  background: rgba(57, 255, 20, 0.14) !important;
+  color: var(--doom-green-hot) !important;
+  border: 1px solid var(--doom-green) !important;
+  box-shadow:
+    0 0 16px var(--doom-glow-soft),
+    inset 0 0 12px rgba(57, 255, 20, 0.12);
+  text-shadow: 0 0 8px rgba(57, 255, 20, 0.55);
+}
+
+html.doom-yt yt-button-shape .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
+html.doom-yt ytd-subscribe-button-renderer button:hover {
+  background: rgba(57, 255, 20, 0.28) !important;
+  box-shadow: 0 0 28px var(--doom-glow);
+}
+
+html.doom-yt yt-button-shape .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal,
+html.doom-yt yt-button-shape .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--outline {
+  background: rgba(0, 20, 12, 0.6) !important;
+  color: var(--doom-text) !important;
+  border: 1px solid var(--doom-metal) !important;
+}
+
+html.doom-yt yt-button-shape .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal:hover,
+html.doom-yt yt-button-shape .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--outline:hover {
+  border-color: var(--doom-phosphor) !important;
+  color: var(--doom-phosphor) !important;
+  background: rgba(0, 255, 156, 0.08) !important;
+  box-shadow: 0 0 14px var(--doom-glow-soft);
+}
+
+/* Watch page panels */
+html.doom-yt ytd-watch-flexy,
+html.doom-yt #columns,
+html.doom-yt #primary,
+html.doom-yt #secondary {
+  background: transparent !important;
+}
+
+html.doom-yt #below,
+html.doom-yt ytd-watch-metadata,
+html.doom-yt #secondary-inner {
+  background: linear-gradient(
+    180deg,
+    rgba(4, 22, 14, 0.88),
+    rgba(2, 10, 7, 0.94)
+  );
+  outline: 1px solid var(--doom-metal);
+  box-shadow:
+    0 0 30px rgba(0, 255, 140, 0.08),
+    inset 0 0 40px rgba(0, 255, 120, 0.03);
+  padding: 8px;
+  backdrop-filter: blur(8px);
+}
+
+html.doom-yt h1.ytd-watch-metadata yt-formatted-string,
+html.doom-yt ytd-watch-metadata h1 {
+  color: var(--doom-text) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 14px rgba(0, 255, 156, 0.2);
+}
+
+html.doom-yt #description-inner,
+html.doom-yt ytd-text-inline-expander,
+html.doom-yt #description {
+  background: rgba(0, 16, 10, 0.85) !important;
+  border: 1px solid var(--doom-metal) !important;
+  border-radius: 2px !important;
+  box-shadow: inset 0 0 20px rgba(0, 255, 140, 0.04);
+}
+
+/* Player — neon scrubber */
+html.doom-yt .ytp-chrome-bottom,
+html.doom-yt .ytp-chrome-controls {
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(0, 16, 10, 0.92)
+  ) !important;
+}
+
+html.doom-yt .ytp-swatch-background-color,
+html.doom-yt .ytp-play-progress,
+html.doom-yt .ytp-scrubber-button {
+  background: var(--doom-green) !important;
+  background-color: var(--doom-green) !important;
+  box-shadow: 0 0 10px var(--doom-glow);
+}
+
+html.doom-yt .ytp-load-progress {
+  background: rgba(0, 255, 156, 0.28) !important;
+}
+
+html.doom-yt .ytp-volume-slider-handle,
+html.doom-yt .ytp-menuitem[aria-checked="true"] .ytp-menuitem-toggle-checkbox {
+  background: var(--doom-cyan) !important;
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
+}
+
+html.doom-yt .ytp-gradient-bottom {
+  background: linear-gradient(
+    to top,
+    rgba(0, 40, 24, 0.85),
+    transparent
+  ) !important;
+}
+
+/* Comments */
+html.doom-yt ytd-comments,
+html.doom-yt ytd-comment-thread-renderer,
+html.doom-yt ytd-comment-view-model {
+  border-top: 1px solid var(--doom-metal);
+}
+
+html.doom-yt #content-text,
+html.doom-yt yt-attributed-string {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace !important;
+  letter-spacing: 0.02em;
+}
+
+/* Menus / dialogs */
+html.doom-yt tp-yt-paper-dialog,
+html.doom-yt ytd-menu-popup-renderer,
+html.doom-yt tp-yt-iron-dropdown,
+html.doom-yt yt-list-view-model {
+  background: rgba(2, 18, 12, 0.96) !important;
+  border: 1px solid var(--doom-green) !important;
+  border-radius: 2px !important;
+  box-shadow:
+    0 0 28px var(--doom-glow-soft),
+    inset 0 0 24px rgba(0, 255, 140, 0.06) !important;
+  backdrop-filter: blur(12px);
+}
+
+/* Scrollbars */
+html.doom-yt *::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+html.doom-yt *::-webkit-scrollbar-track {
+  background: #020805;
+}
+
+html.doom-yt *::-webkit-scrollbar-thumb {
+  background: rgba(0, 80, 48, 0.9);
+  border: 1px solid var(--doom-phosphor);
+  box-shadow: 0 0 8px rgba(0, 255, 156, 0.35);
+}
+
+html.doom-yt *::-webkit-scrollbar-thumb:hover {
+  background: rgba(57, 255, 20, 0.45);
+}
+
+/* Hide Shorts mode — structural + JS-marked targets */
+html.doom-yt-hide-shorts ytd-reel-shelf-renderer,
+html.doom-yt-hide-shorts ytd-rich-shelf-renderer[is-shorts],
+html.doom-yt-hide-shorts ytd-shorts,
+html.doom-yt-hide-shorts ytd-reel-item-renderer,
+html.doom-yt-hide-shorts ytm-shorts-lockup-view-model,
+html.doom-yt-hide-shorts ytd-guide-entry-renderer:has(a[href="/shorts"]),
+html.doom-yt-hide-shorts ytd-mini-guide-entry-renderer:has(a[href="/shorts"]),
+html.doom-yt-hide-shorts ytd-guide-entry-renderer:has(a[title="Shorts"]),
+html.doom-yt-hide-shorts ytd-mini-guide-entry-renderer[aria-label="Shorts"],
+html.doom-yt-hide-shorts .doom-yt-shorts-item {
+  display: none !important;
+}
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DOOM YouTube</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="header">
+      <p class="eyebrow">UAC // NEURAL LINK</p>
+      <h1>DOOM HUD</h1>
+    </header>
+
+    <label class="toggle-row" for="enabled">
+      <span>
+        <strong>THEME</strong>
+        <small id="status-text">ARMING…</small>
+      </span>
+      <input id="enabled" type="checkbox" checked />
+      <span class="switch" aria-hidden="true"></span>
+    </label>
+
+    <label class="toggle-row" for="hide-shorts">
+      <span>
+        <strong>HIDE SHORTS</strong>
+        <small id="shorts-status">OFF</small>
+      </span>
+      <input id="hide-shorts" type="checkbox" />
+      <span class="switch" aria-hidden="true"></span>
+    </label>
+
+    <p class="hint">Reload YouTube if something looks stuck halfway.</p>
+    <script src="popup.js"></script>
+  </body>
+</html>
