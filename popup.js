@@ -1,16 +1,18 @@
 const themeCheckbox = document.getElementById("enabled");
+const sessionCheckbox = document.getElementById("session-timer");
 const shortsCheckbox = document.getElementById("hide-shorts");
 const statusText = document.getElementById("status-text");
+const sessionStatus = document.getElementById("session-status");
 const shortsStatus = document.getElementById("shorts-status");
+
+function setOnOff(el, enabled) {
+  el.textContent = enabled ? "ON" : "OFF";
+  el.style.color = enabled ? "#3dff2e" : "#5f8672";
+}
 
 function setThemeStatus(enabled) {
   statusText.textContent = enabled ? "ONLINE" : "OFFLINE";
-  statusText.style.color = enabled ? "#39ff14" : "#6f9f84";
-}
-
-function setShortsStatus(enabled) {
-  shortsStatus.textContent = enabled ? "ON" : "OFF";
-  shortsStatus.style.color = enabled ? "#39ff14" : "#6f9f84";
+  statusText.style.color = enabled ? "#3dff2e" : "#5f8672";
 }
 
 async function broadcast(settings) {
@@ -32,14 +34,18 @@ async function broadcast(settings) {
 }
 
 async function init() {
-  const { enabled = true, hideShorts = false } = await chrome.storage.local.get([
-    "enabled",
-    "hideShorts",
-  ]);
+  const {
+    enabled = true,
+    hideShorts = false,
+    sessionTimer = true,
+  } = await chrome.storage.local.get(["enabled", "hideShorts", "sessionTimer"]);
+
   themeCheckbox.checked = enabled;
+  sessionCheckbox.checked = sessionTimer;
   shortsCheckbox.checked = hideShorts;
   setThemeStatus(enabled);
-  setShortsStatus(hideShorts);
+  setOnOff(sessionStatus, sessionTimer);
+  setOnOff(shortsStatus, hideShorts);
 }
 
 themeCheckbox.addEventListener("change", async () => {
@@ -49,10 +55,17 @@ themeCheckbox.addEventListener("change", async () => {
   await broadcast({ enabled });
 });
 
+sessionCheckbox.addEventListener("change", async () => {
+  const sessionTimer = sessionCheckbox.checked;
+  await chrome.storage.local.set({ sessionTimer });
+  setOnOff(sessionStatus, sessionTimer);
+  await broadcast({ sessionTimer });
+});
+
 shortsCheckbox.addEventListener("change", async () => {
   const hideShorts = shortsCheckbox.checked;
   await chrome.storage.local.set({ hideShorts });
-  setShortsStatus(hideShorts);
+  setOnOff(shortsStatus, hideShorts);
   await broadcast({ hideShorts });
 });
 
