@@ -1,13 +1,24 @@
 {
   "manifest_version": 3,
-  "name": "DOOM YouTube",
-  "version": "1.3.0",
-  "description": "Neon DOOM-style YouTube theme with session timer and optional Hide Shorts.",
+  "name": "DOOM HUD",
+  "version": "2.2.0",
+  "description": "Neon DOOM-style HUD theme for YouTube, Facebook, Twitter/X, and LinkedIn — with session timer.",
   "permissions": ["storage"],
-  "host_permissions": ["*://www.youtube.com/*", "*://youtube.com/*"],
+  "host_permissions": [
+    "*://www.youtube.com/*",
+    "*://youtube.com/*",
+    "*://www.facebook.com/*",
+    "*://facebook.com/*",
+    "*://www.twitter.com/*",
+    "*://twitter.com/*",
+    "*://www.x.com/*",
+    "*://x.com/*",
+    "*://www.linkedin.com/*",
+    "*://linkedin.com/*"
+  ],
   "action": {
     "default_popup": "popup.html",
-    "default_title": "DOOM YouTube",
+    "default_title": "DOOM HUD",
     "default_icon": {
       "16": "icons/icon16.png",
       "48": "icons/icon48.png",
@@ -21,8 +32,19 @@
   },
   "content_scripts": [
     {
-      "matches": ["*://www.youtube.com/*", "*://youtube.com/*"],
-      "css": ["content.css"],
+      "matches": [
+        "*://www.youtube.com/*",
+        "*://youtube.com/*",
+        "*://www.facebook.com/*",
+        "*://facebook.com/*",
+        "*://www.twitter.com/*",
+        "*://twitter.com/*",
+        "*://www.x.com/*",
+        "*://x.com/*",
+        "*://www.linkedin.com/*",
+        "*://linkedin.com/*"
+      ],
+      "css": ["content.css", "facebook.css", "twitter.css", "linkedin.css"],
       "js": ["content.js"],
       "run_at": "document_start"
     }

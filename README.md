@@ -1,8 +1,8 @@
-# DOOM YouTube
+# DOOM HUD
 
-> Same YouTube. Different cockpit.
+> Same sites. Different cockpit.
 
-A Chrome extension that restyles [youtube.com](https://www.youtube.com) as a neon phosphor HUD — dark void, electric green, glass panels — and can optionally wipe Shorts out of the UI entirely.
+A Chrome extension that restyles **YouTube**, **Facebook**, **Twitter/X**, and **LinkedIn** as a neon phosphor HUD — dark void, electric green, glass panels — with a shared session timer and optional Shorts/Reels hiding.
 
 ![YouTube homepage restyled with a neon green tactical HUD theme](preview.png)
 
@@ -28,7 +28,7 @@ Then you look at the result, send a screenshot, and steer:
 | “No fake HUD chrome” | Reticle, vitals, label renames get cut |
 | “Also kill Shorts” | A second mode lands in the popup |
 
-The site stays YouTube. The *interface* becomes yours.
+The sites stay themselves. The *interface* becomes yours.
 
 ---
 
@@ -58,21 +58,26 @@ This repo is a small receipt: a theme built by describing how YouTube *should* f
 
 | Control | What it does |
 | --- | --- |
-| **Theme** | Neon green restyle — masthead, sidebar, chips, cards, player accents, scrollbars |
-| **Hide Shorts** | Removes Shorts shelves, nav entries, feed items; blocks `/shorts` clicks; bounces Shorts pages home |
+| **Sites** | Per-site on/off for YouTube, Facebook, X, and LinkedIn |
+| **Theme** | Neon green restyle (only on enabled sites) |
+| **Session Timer** | Large top bar tracking active time per site (pauses when the tab is hidden) |
+| **Hide Shorts / Reels** | YouTube Shorts, Facebook Reels; video/Explore cleanup on X & LinkedIn |
 
-Theme and Shorts hiding are independent. Run one, both, or neither.
+Supported hosts: `youtube.com`, `facebook.com`, `twitter.com`, `x.com`, `linkedin.com`.
 
 ### Stack
 
 | File | Role |
 | --- | --- |
 | `manifest.json` | MV3 extension config |
-| `content.css` | The skin |
-| `content.js` | Theme class + Shorts scrubber (SPA-aware) |
+| `content.css` | Shared theme + YouTube skin + session bar |
+| `facebook.css` | Facebook skin |
+| `twitter.css` | Twitter / X skin |
+| `linkedin.css` | LinkedIn skin |
+| `content.js` | Theme, session timer, Shorts/Reels scrubber |
 | `popup.*` | On/off controls |
 | `icons/` | Extension icons |
-| `preview.png` | What it looks like in the wild |
+| `preview.png` | YouTube preview |
 
 ---
 

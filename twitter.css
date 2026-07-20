@@ -1,0 +1,215 @@
+/* Twitter / X — neon phosphor HUD */
+
+html.doom-yt[data-doom-site="twitter"],
+html.doom-yt[data-doom-site="twitter"] body {
+  background: var(--doom-bg) !important;
+  color: var(--doom-text) !important;
+  font-family: var(--doom-sans) !important;
+}
+
+html.doom-yt[data-doom-site="twitter"] body {
+  background-image:
+    radial-gradient(ellipse 90% 55% at 50% -15%, rgba(0, 255, 140, 0.14), transparent 58%),
+    radial-gradient(ellipse 50% 40% at 100% 0%, rgba(46, 240, 255, 0.06), transparent 45%),
+    linear-gradient(180deg, #03140d 0%, var(--doom-bg) 42%, #000805 100%) !important;
+  background-attachment: fixed !important;
+}
+
+html.doom-yt[data-doom-site="twitter"] {
+  color-scheme: dark;
+}
+
+/* X uses CSS variables on html — override the palette */
+html.doom-yt[data-doom-site="twitter"] {
+  --color-background: var(--doom-bg) !important;
+  --color-primary: var(--doom-green) !important;
+  --color-text: var(--doom-text) !important;
+}
+
+html.doom-yt-session[data-doom-site="twitter"] body {
+  padding-top: var(--doom-session-h) !important;
+}
+
+html.doom-yt-session[data-doom-site="twitter"] header[role="banner"] {
+  top: var(--doom-session-h) !important;
+}
+
+/* App columns */
+html.doom-yt[data-doom-site="twitter"] #react-root,
+html.doom-yt[data-doom-site="twitter"] main[role="main"],
+html.doom-yt[data-doom-site="twitter"] div[data-testid="primaryColumn"],
+html.doom-yt[data-doom-site="twitter"] div[data-testid="sidebarColumn"] {
+  background-color: transparent !important;
+}
+
+html.doom-yt[data-doom-site="twitter"] header[role="banner"] {
+  background: linear-gradient(
+    180deg,
+    rgba(4, 28, 18, 0.55) 0%,
+    rgba(1, 12, 8, 0.2) 100%
+  ) !important;
+}
+
+html.doom-yt[data-doom-site="twitter"] nav[role="navigation"] a,
+html.doom-yt[data-doom-site="twitter"] nav[aria-label="Primary"] a {
+  border-radius: 3px !important;
+  transition: background 140ms var(--doom-ease), box-shadow 140ms var(--doom-ease);
+}
+
+html.doom-yt[data-doom-site="twitter"] nav[aria-label="Primary"] a:hover,
+html.doom-yt[data-doom-site="twitter"] nav[role="navigation"] a:hover {
+  background: rgba(61, 255, 46, 0.08) !important;
+  box-shadow: inset 3px 0 0 var(--doom-green);
+}
+
+html.doom-yt[data-doom-site="twitter"] nav[aria-label="Primary"] a[aria-current="page"],
+html.doom-yt[data-doom-site="twitter"] a[aria-current="page"] {
+  box-shadow: inset 3px 0 0 var(--doom-green);
+  text-shadow: 0 0 10px rgba(61, 255, 46, 0.35);
+}
+
+/* Timeline posts */
+html.doom-yt[data-doom-site="twitter"] article[data-testid="tweet"],
+html.doom-yt[data-doom-site="twitter"] div[data-testid="cellInnerDiv"] > div {
+  border-color: rgba(61, 255, 46, 0.12) !important;
+}
+
+html.doom-yt[data-doom-site="twitter"] article[data-testid="tweet"] {
+  background: linear-gradient(
+    160deg,
+    rgba(8, 36, 22, 0.35) 0%,
+    rgba(2, 14, 9, 0.45) 100%
+  );
+  transition: background 160ms var(--doom-ease), box-shadow 160ms var(--doom-ease);
+}
+
+html.doom-yt[data-doom-site="twitter"] article[data-testid="tweet"]:hover {
+  background: linear-gradient(
+    160deg,
+    rgba(12, 48, 30, 0.5) 0%,
+    rgba(3, 18, 12, 0.55) 100%
+  );
+  box-shadow:
+    inset 0 0 0 1px rgba(61, 255, 46, 0.18),
+    0 0 24px rgba(0, 255, 163, 0.08);
+}
+
+/* Primary column frame */
+html.doom-yt[data-doom-site="twitter"] div[data-testid="primaryColumn"] {
+  border-left: 1px solid var(--doom-line) !important;
+  border-right: 1px solid var(--doom-line) !important;
+  box-shadow:
+    0 0 40px rgba(0, 255, 140, 0.05),
+    inset 0 0 60px rgba(0, 255, 120, 0.02);
+}
+
+/* Compose / inputs */
+html.doom-yt[data-doom-site="twitter"] div[data-testid="tweetTextarea_0"],
+html.doom-yt[data-doom-site="twitter"] div[role="textbox"],
+html.doom-yt[data-doom-site="twitter"] input[data-testid="SearchBox_Search_Input"] {
+  caret-color: var(--doom-phosphor) !important;
+}
+
+html.doom-yt[data-doom-site="twitter"] input[data-testid="SearchBox_Search_Input"] {
+  background: rgba(0, 16, 10, 0.88) !important;
+  color: var(--doom-text) !important;
+  border-radius: 3px !important;
+  border: 1px solid var(--doom-line) !important;
+  box-shadow: inset 0 0 20px rgba(0, 255, 140, 0.04);
+}
+
+html.doom-yt[data-doom-site="twitter"] input[data-testid="SearchBox_Search_Input"]:focus {
+  border-color: var(--doom-phosphor) !important;
+  box-shadow:
+    0 0 0 3px rgba(0, 255, 163, 0.12),
+    0 0 20px var(--doom-glow-soft) !important;
+}
+
+/* Links + text accents */
+html.doom-yt[data-doom-site="twitter"] a {
+  transition: color 140ms var(--doom-ease), text-shadow 140ms var(--doom-ease);
+}
+
+html.doom-yt[data-doom-site="twitter"] a[href*="/hashtag/"],
+html.doom-yt[data-doom-site="twitter"] a[href^="/search"],
+html.doom-yt[data-doom-site="twitter"] div[data-testid="User-Name"] a {
+  color: var(--doom-phosphor) !important;
+}
+
+html.doom-yt[data-doom-site="twitter"] a:hover {
+  text-shadow: 0 0 8px rgba(0, 255, 163, 0.35);
+}
+
+/* Buttons — Post / Follow */
+html.doom-yt[data-doom-site="twitter"] a[data-testid="SideNav_NewTweet_Button"],
+html.doom-yt[data-doom-site="twitter"] button[data-testid="tweetButtonInline"],
+html.doom-yt[data-doom-site="twitter"] button[data-testid="tweetButton"],
+html.doom-yt[data-doom-site="twitter"] [data-testid$="-follow"] {
+  background: linear-gradient(
+    180deg,
+    rgba(61, 255, 46, 0.28),
+    rgba(0, 90, 50, 0.55)
+  ) !important;
+  color: var(--doom-green-hot) !important;
+  border: 1px solid var(--doom-green) !important;
+  border-radius: 3px !important;
+  box-shadow:
+    0 0 18px var(--doom-glow-soft),
+    inset 0 1px 0 rgba(200, 255, 220, 0.18);
+  text-shadow: 0 0 8px rgba(61, 255, 46, 0.4);
+}
+
+html.doom-yt[data-doom-site="twitter"] a[data-testid="SideNav_NewTweet_Button"]:hover,
+html.doom-yt[data-doom-site="twitter"] button[data-testid="tweetButtonInline"]:hover,
+html.doom-yt[data-doom-site="twitter"] button[data-testid="tweetButton"]:hover {
+  box-shadow: 0 0 28px var(--doom-glow);
+}
+
+/* Tabs */
+html.doom-yt[data-doom-site="twitter"] div[role="tablist"] a[role="tab"],
+html.doom-yt[data-doom-site="twitter"] div[role="tablist"] button[role="tab"] {
+  transition: color 140ms var(--doom-ease);
+}
+
+html.doom-yt[data-doom-site="twitter"] div[role="tablist"] a[aria-selected="true"],
+html.doom-yt[data-doom-site="twitter"] div[role="tablist"] button[aria-selected="true"] {
+  color: var(--doom-green-hot) !important;
+  text-shadow: 0 0 10px rgba(61, 255, 46, 0.4);
+}
+
+html.doom-yt[data-doom-site="twitter"] div[role="tablist"] a[aria-selected="true"] > div > div,
+html.doom-yt[data-doom-site="twitter"] div[role="tablist"] [aria-selected="true"] [style*="background"] {
+  background-color: var(--doom-green) !important;
+  box-shadow: 0 0 12px var(--doom-glow);
+}
+
+/* Cards / modals */
+html.doom-yt[data-doom-site="twitter"] div[aria-modal="true"],
+html.doom-yt[data-doom-site="twitter"] div[data-testid="Dropdown"],
+html.doom-yt[data-doom-site="twitter"] div[data-testid="HoverCard"] {
+  background: rgba(2, 18, 12, 0.96) !important;
+  border: 1px solid var(--doom-line-strong) !important;
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.55),
+    0 0 28px var(--doom-glow-soft) !important;
+  backdrop-filter: blur(14px);
+}
+
+html.doom-yt[data-doom-site="twitter"] ::selection {
+  background: rgba(61, 255, 46, 0.35);
+  color: #021006;
+}
+
+html.doom-yt[data-doom-site="twitter"] * {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 255, 163, 0.4) rgba(0, 10, 6, 0.6);
+}
+
+/* Hide short-form / explore-video style destinations when mode on */
+html.doom-yt-hide-shorts[data-doom-site="twitter"] a[href="/i/spaces"],
+html.doom-yt-hide-shorts[data-doom-site="twitter"] a[href*="/i/broadcasts"],
+html.doom-yt-hide-shorts[data-doom-site="twitter"] a[aria-label="Video"],
+html.doom-yt-hide-shorts[data-doom-site="twitter"] a[href="/explore"],
+html.doom-yt-hide-shorts[data-doom-site="twitter"] .doom-yt-shorts-item {
+  display: none !important;
+}

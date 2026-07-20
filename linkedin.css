@@ -1,0 +1,263 @@
+/* LinkedIn — neon phosphor HUD */
+
+html.doom-yt[data-doom-site="linkedin"],
+html.doom-yt[data-doom-site="linkedin"] body {
+  background: var(--doom-bg) !important;
+  color: var(--doom-text) !important;
+  font-family: var(--doom-sans) !important;
+}
+
+html.doom-yt[data-doom-site="linkedin"] body {
+  background-image:
+    radial-gradient(ellipse 90% 55% at 50% -15%, rgba(0, 255, 140, 0.14), transparent 58%),
+    radial-gradient(ellipse 50% 40% at 100% 0%, rgba(46, 240, 255, 0.06), transparent 45%),
+    linear-gradient(180deg, #03140d 0%, var(--doom-bg) 42%, #000805 100%) !important;
+  background-attachment: fixed !important;
+}
+
+html.doom-yt[data-doom-site="linkedin"] {
+  --color-background-canvas: var(--doom-bg) !important;
+  --color-background-container: #04150e !important;
+  --color-background-brand: var(--doom-green) !important;
+  --color-text: var(--doom-text) !important;
+  --color-text-low-emphasis: var(--doom-muted) !important;
+  --voyager-color-background-canvas: var(--doom-bg) !important;
+  --voyager-color-background-container: #04150e !important;
+}
+
+html.doom-yt-session[data-doom-site="linkedin"] body {
+  padding-top: var(--doom-session-h) !important;
+}
+
+html.doom-yt-session[data-doom-site="linkedin"] .global-nav,
+html.doom-yt-session[data-doom-site="linkedin"] header.global-nav {
+  top: var(--doom-session-h) !important;
+}
+
+/* Global nav */
+html.doom-yt[data-doom-site="linkedin"] .global-nav,
+html.doom-yt[data-doom-site="linkedin"] header.global-nav,
+html.doom-yt[data-doom-site="linkedin"] .nav-main__content {
+  background: linear-gradient(
+    180deg,
+    rgba(4, 28, 18, 0.96) 0%,
+    rgba(1, 12, 8, 0.92) 100%
+  ) !important;
+  border-bottom: 1px solid var(--doom-line) !important;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(0, 255, 140, 0.06),
+    var(--doom-inset) !important;
+  backdrop-filter: blur(16px) saturate(1.35);
+  -webkit-backdrop-filter: blur(16px) saturate(1.35);
+}
+
+html.doom-yt[data-doom-site="linkedin"] .global-nav__primary-link,
+html.doom-yt[data-doom-site="linkedin"] .global-nav__primary-link-active,
+html.doom-yt[data-doom-site="linkedin"] nav a {
+  color: var(--doom-text-dim) !important;
+  transition: color 140ms var(--doom-ease), text-shadow 140ms var(--doom-ease);
+}
+
+html.doom-yt[data-doom-site="linkedin"] .global-nav__primary-link:hover,
+html.doom-yt[data-doom-site="linkedin"] nav a:hover {
+  color: var(--doom-phosphor) !important;
+  text-shadow: 0 0 8px rgba(0, 255, 163, 0.35);
+}
+
+html.doom-yt[data-doom-site="linkedin"] .global-nav__primary-link--active,
+html.doom-yt[data-doom-site="linkedin"] .active .global-nav__primary-link {
+  color: var(--doom-green-hot) !important;
+  text-shadow: 0 0 10px rgba(61, 255, 46, 0.45);
+}
+
+/* Search */
+html.doom-yt[data-doom-site="linkedin"] .search-global-typeahead__input,
+html.doom-yt[data-doom-site="linkedin"] input.search-global-typeahead__input,
+html.doom-yt[data-doom-site="linkedin"] input[type="text"],
+html.doom-yt[data-doom-site="linkedin"] textarea {
+  background: rgba(0, 16, 10, 0.88) !important;
+  color: var(--doom-text) !important;
+  border: 1px solid var(--doom-line) !important;
+  border-radius: 3px !important;
+  caret-color: var(--doom-phosphor);
+  box-shadow: inset 0 0 20px rgba(0, 255, 140, 0.04);
+}
+
+html.doom-yt[data-doom-site="linkedin"] .search-global-typeahead__input:focus,
+html.doom-yt[data-doom-site="linkedin"] input:focus,
+html.doom-yt[data-doom-site="linkedin"] textarea:focus {
+  border-color: var(--doom-phosphor) !important;
+  box-shadow:
+    0 0 0 3px rgba(0, 255, 163, 0.12),
+    0 0 20px var(--doom-glow-soft) !important;
+}
+
+/* Layout / aside panels */
+html.doom-yt[data-doom-site="linkedin"] .scaffold-layout__main,
+html.doom-yt[data-doom-site="linkedin"] .scaffold-layout__aside,
+html.doom-yt[data-doom-site="linkedin"] .scaffold-layout__content,
+html.doom-yt[data-doom-site="linkedin"] .application-outlet,
+html.doom-yt[data-doom-site="linkedin"] .authentication-outlet {
+  background: transparent !important;
+}
+
+html.doom-yt[data-doom-site="linkedin"] .scaffold-layout__aside .artdeco-card,
+html.doom-yt[data-doom-site="linkedin"] aside .artdeco-card {
+  background: linear-gradient(
+    160deg,
+    rgba(6, 32, 20, 0.75),
+    rgba(2, 14, 9, 0.9)
+  ) !important;
+  border: 1px solid var(--doom-line) !important;
+  box-shadow: var(--doom-inset);
+  border-radius: 4px !important;
+}
+
+/* Feed cards */
+html.doom-yt[data-doom-site="linkedin"] .feed-shared-update-v2,
+html.doom-yt[data-doom-site="linkedin"] .artdeco-card,
+html.doom-yt[data-doom-site="linkedin"] .update-components-actor,
+html.doom-yt[data-doom-site="linkedin"] .share-box-feed-entry__wrapper,
+html.doom-yt[data-doom-site="linkedin"] .scaffold-finite-scroll__content > div > div {
+  background: linear-gradient(
+    160deg,
+    rgba(8, 36, 22, 0.72) 0%,
+    rgba(2, 14, 9, 0.88) 100%
+  ) !important;
+  border: 1px solid var(--doom-line) !important;
+  border-radius: 4px !important;
+  box-shadow:
+    var(--doom-inset),
+    0 2px 16px rgba(0, 0, 0, 0.25);
+  transition: border-color 180ms var(--doom-ease), box-shadow 180ms var(--doom-ease),
+    transform 180ms var(--doom-ease);
+}
+
+html.doom-yt[data-doom-site="linkedin"] .feed-shared-update-v2:hover,
+html.doom-yt[data-doom-site="linkedin"] .artdeco-card:hover {
+  border-color: var(--doom-line-strong) !important;
+  box-shadow:
+    0 0 0 1px rgba(61, 255, 46, 0.16),
+    0 8px 28px rgba(0, 0, 0, 0.35),
+    0 0 28px var(--doom-glow-soft);
+}
+
+html.doom-yt[data-doom-site="linkedin"] .feed-shared-update-v2 {
+  margin-bottom: 8px !important;
+}
+
+/* Text */
+html.doom-yt[data-doom-site="linkedin"] a,
+html.doom-yt[data-doom-site="linkedin"] .app-aware-link {
+  color: var(--doom-phosphor) !important;
+  transition: color 140ms var(--doom-ease), text-shadow 140ms var(--doom-ease);
+}
+
+html.doom-yt[data-doom-site="linkedin"] a:hover,
+html.doom-yt[data-doom-site="linkedin"] .app-aware-link:hover {
+  color: var(--doom-green-hot) !important;
+  text-shadow: 0 0 10px rgba(61, 255, 46, 0.35);
+}
+
+html.doom-yt[data-doom-site="linkedin"] h1,
+html.doom-yt[data-doom-site="linkedin"] h2,
+html.doom-yt[data-doom-site="linkedin"] h3,
+html.doom-yt[data-doom-site="linkedin"] .t-black,
+html.doom-yt[data-doom-site="linkedin"] .t-16,
+html.doom-yt[data-doom-site="linkedin"] .t-14,
+html.doom-yt[data-doom-site="linkedin"] .t-12,
+html.doom-yt[data-doom-site="linkedin"] .update-components-text,
+html.doom-yt[data-doom-site="linkedin"] .feed-shared-text {
+  color: var(--doom-text) !important;
+}
+
+html.doom-yt[data-doom-site="linkedin"] .t-black--light,
+html.doom-yt[data-doom-site="linkedin"] .t-bold.t-black--light,
+html.doom-yt[data-doom-site="linkedin"] .feed-shared-actor__sub-description {
+  color: var(--doom-muted) !important;
+}
+
+/* Buttons */
+html.doom-yt[data-doom-site="linkedin"] .artdeco-button--primary,
+html.doom-yt[data-doom-site="linkedin"] button.artdeco-button--primary {
+  background: linear-gradient(
+    180deg,
+    rgba(61, 255, 46, 0.28),
+    rgba(0, 90, 50, 0.55)
+  ) !important;
+  color: var(--doom-green-hot) !important;
+  border: 1px solid var(--doom-green) !important;
+  border-radius: 3px !important;
+  box-shadow:
+    0 0 16px var(--doom-glow-soft),
+    inset 0 1px 0 rgba(200, 255, 220, 0.18);
+  text-shadow: 0 0 8px rgba(61, 255, 46, 0.4);
+}
+
+html.doom-yt[data-doom-site="linkedin"] .artdeco-button--primary:hover {
+  box-shadow: 0 0 26px var(--doom-glow) !important;
+}
+
+html.doom-yt[data-doom-site="linkedin"] .artdeco-button--secondary,
+html.doom-yt[data-doom-site="linkedin"] .artdeco-button--tertiary,
+html.doom-yt[data-doom-site="linkedin"] .artdeco-button--circle {
+  background: rgba(0, 22, 14, 0.65) !important;
+  color: var(--doom-text) !important;
+  border: 1px solid var(--doom-line) !important;
+  border-radius: 3px !important;
+}
+
+html.doom-yt[data-doom-site="linkedin"] .artdeco-button--secondary:hover,
+html.doom-yt[data-doom-site="linkedin"] .artdeco-button--tertiary:hover {
+  border-color: var(--doom-phosphor) !important;
+  color: var(--doom-phosphor) !important;
+  box-shadow: 0 0 14px var(--doom-glow-soft);
+}
+
+/* Messaging / dropdowns */
+html.doom-yt[data-doom-site="linkedin"] .msg-overlay-list-bubble,
+html.doom-yt[data-doom-site="linkedin"] .msg-overlay-conversation-bubble,
+html.doom-yt[data-doom-site="linkedin"] .artdeco-dropdown__content,
+html.doom-yt[data-doom-site="linkedin"] .artdeco-modal,
+html.doom-yt[data-doom-site="linkedin"] .artdeco-hoverable-content {
+  background: rgba(2, 18, 12, 0.96) !important;
+  border: 1px solid var(--doom-line-strong) !important;
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.55),
+    0 0 28px var(--doom-glow-soft) !important;
+  backdrop-filter: blur(14px);
+  color: var(--doom-text) !important;
+}
+
+/* Profile / identity */
+html.doom-yt[data-doom-site="linkedin"] .profile-rail-card,
+html.doom-yt[data-doom-site="linkedin"] .feed-identity-module,
+html.doom-yt[data-doom-site="linkedin"] .presence-entity {
+  background: linear-gradient(
+    160deg,
+    rgba(6, 32, 20, 0.8),
+    rgba(2, 14, 9, 0.92)
+  ) !important;
+  border: 1px solid var(--doom-line) !important;
+}
+
+html.doom-yt[data-doom-site="linkedin"] ::selection {
+  background: rgba(61, 255, 46, 0.35);
+  color: #021006;
+}
+
+html.doom-yt[data-doom-site="linkedin"] * {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 255, 163, 0.4) rgba(0, 10, 6, 0.6);
+}
+
+/* Hide short video / games-style noise when mode on */
+html.doom-yt-hide-shorts[data-doom-site="linkedin"] a[href*="/video/"],
+html.doom-yt-hide-shorts[data-doom-site="linkedin"] a[href*="/games"],
+html.doom-yt-hide-shorts[data-doom-site="linkedin"] a[href*="linkedin.com/video"],
+html.doom-yt-hide-shorts[data-doom-site="linkedin"] .feed-shared-linkedin-video,
+html.doom-yt-hide-shorts[data-doom-site="linkedin"] .update-components-linkedin-video,
+html.doom-yt-hide-shorts[data-doom-site="linkedin"] .doom-yt-shorts-item {
+  display: none !important;
+}

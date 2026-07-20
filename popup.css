@@ -17,7 +17,7 @@
 body {
   position: relative;
   margin: 0;
-  width: 280px;
+  width: 300px;
   padding: 18px;
   overflow: hidden;
   color: var(--text);
@@ -109,6 +109,65 @@ h1 {
   text-shadow:
     0 0 14px rgba(61, 255, 46, 0.65),
     0 0 28px rgba(0, 255, 163, 0.25);
+}
+
+.section-label {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 8px;
+  color: var(--phosphor);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-shadow: 0 0 8px rgba(0, 255, 163, 0.35);
+}
+
+.site-grid + .section-label {
+  margin-top: 14px;
+}
+
+.site-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.site-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 10px;
+  background: rgba(0, 16, 10, 0.75);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: border-color 160ms var(--ease), color 160ms var(--ease),
+    box-shadow 160ms var(--ease), background 160ms var(--ease);
+}
+
+.site-chip input[type="checkbox"] {
+  position: static !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  width: 12px;
+  height: 12px;
+  accent-color: var(--green);
+  margin: 0;
+}
+
+.site-chip.is-on {
+  color: var(--text);
+  border-color: rgba(61, 255, 46, 0.55);
+  background: rgba(61, 255, 46, 0.1);
+  box-shadow: 0 0 14px rgba(0, 255, 163, 0.12);
+}
+
+.site-chip:hover {
+  border-color: rgba(0, 255, 163, 0.55);
 }
 
 .toggle-row {

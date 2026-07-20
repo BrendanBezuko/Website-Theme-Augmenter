@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>DOOM YouTube</title>
+    <title>DOOM HUD</title>
     <link rel="stylesheet" href="popup.css" />
   </head>
   <body>
@@ -11,6 +11,28 @@
       <p class="eyebrow">UAC // NEURAL LINK</p>
       <h1>DOOM HUD</h1>
     </header>
+
+    <p class="section-label">SITES</p>
+    <div class="site-grid" id="site-grid">
+      <label class="site-chip" for="site-youtube">
+        <input id="site-youtube" type="checkbox" data-site="youtube" checked />
+        <span>YouTube</span>
+      </label>
+      <label class="site-chip" for="site-facebook">
+        <input id="site-facebook" type="checkbox" data-site="facebook" checked />
+        <span>Facebook</span>
+      </label>
+      <label class="site-chip" for="site-twitter">
+        <input id="site-twitter" type="checkbox" data-site="twitter" checked />
+        <span>X / Twitter</span>
+      </label>
+      <label class="site-chip" for="site-linkedin">
+        <input id="site-linkedin" type="checkbox" data-site="linkedin" checked />
+        <span>LinkedIn</span>
+      </label>
+    </div>
+
+    <p class="section-label">FEATURES</p>
 
     <label class="toggle-row" for="enabled">
       <span>
@@ -32,14 +54,16 @@
 
     <label class="toggle-row" for="hide-shorts">
       <span>
-        <strong>HIDE SHORTS</strong>
+        <strong>HIDE SHORTS / REELS</strong>
         <small id="shorts-status">OFF</small>
       </span>
       <input id="hide-shorts" type="checkbox" />
       <span class="switch" aria-hidden="true"></span>
     </label>
 
-    <p class="hint">Reload YouTube if something looks stuck halfway.</p>
+    <p class="hint">
+      Features only apply on sites that are turned on above.
+    </p>
     <script src="popup.js"></script>
   </body>
 </html>

@@ -57,7 +57,8 @@ html.doom-yt {
 
 html.doom-yt,
 html.doom-yt body,
-html.doom-yt ytd-app {
+html.doom-yt ytd-app,
+html.doom-yt #react-root {
   background: var(--doom-bg) !important;
   color: var(--doom-text) !important;
   font-family: var(--doom-sans) !important;
